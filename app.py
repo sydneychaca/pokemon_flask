@@ -2,7 +2,8 @@
 # -- Import section --
 from flask import Flask
 from flask import render_template
-# from flask import request
+from flask import request
+from model import pokemon_choice_message
 
 
 # -- Initialization section --
@@ -24,9 +25,12 @@ def index():
 def secret():
     return "I found mew"
 
-@app.route('/resultspage')
+@app.route('/resultspage', methods = ["GET", "POST"])
 def resultspage():
-    props = {
-        'sound': 'roar'
-    }
-    return render_template("resultspage.html", props=props)
+    print (request.form["pokemon"])
+    # props = {
+    #     'sound': 'roar'
+    # }
+    user_choice = request.form["pokemon"]
+    message = pokemon_choice_message(user_choice)
+    return render_template("resultspage.html", message = message)

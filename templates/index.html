@@ -5,8 +5,8 @@
     <body>
         <h1>Hello, this page is about the {{props["type"]}} pokemon {{props["name"]}}!</h1>
         <p>We can build a full webpage here</p>
-        <form>
-            <input type="text" name="nickname" placeholder="Enter your nickname"/>
+        <form method = "post" action = "/resultspage">
+            <input type="text" name="pokemon" placeholder="What is your favorite pokemon?"/>
             <input type="submit" value="Submit"/>
         </form>
     </body>
